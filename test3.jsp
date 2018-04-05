@@ -365,11 +365,24 @@
   </div>
 
 </div>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<% 
+    HttpSession hs = request.getSession(true);
+      int age,engnat,hand,gender,answers,answers1;
+            age=Integer.parseInt(session.getAttribute("age").toString());
+           engnat=Integer.parseInt(session.getAttribute("engnat").toString());
+           gender=Integer.parseInt(session.getAttribute("gender").toString());
+           hand=Integer.parseInt(session.getAttribute("hand").toString());
+           answers=Integer.parseInt(session.getAttribute("answers").toString());
+           answers1=Integer.parseInt(session.getAttribute("answers1").toString());
+           session.setAttribute("answers2", "answers2");
+ int answers2=Integer.parseInt(request.getParameter("answers2"));
+            hs.setAttribute("answers2", answers2);
+           %>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 
   <script src="js/index.js"></script>
   <script type="text/javascript">
-    var answers = [];
+    var answers2 = [];
     function check(str)
     {
       var radArray = document.getElementsByName(str);
@@ -378,8 +391,8 @@
         if(radArray[i].checked)
         {
           // alert(radArray[i].value);
-          answers[parseInt(str)] = radArray[i].value;
-          alert(answers[parseInt(str)])
+          answers2[parseInt(str)] = radArray[i].value;
+          alert(answers2[parseInt(str)])
         }
       }
     }

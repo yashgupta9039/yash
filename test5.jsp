@@ -389,11 +389,26 @@
   </div>
 
 </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<% 
+    HttpSession hs = request.getSession(true);
+      int age,engnat,hand,gender,answers,answers1,answers2,answers3;
+            age=Integer.parseInt(session.getAttribute("age").toString());
+           engnat=Integer.parseInt(session.getAttribute("engnat").toString());
+           gender=Integer.parseInt(session.getAttribute("gender").toString());
+           hand=Integer.parseInt(session.getAttribute("hand").toString());
+           answers=Integer.parseInt(session.getAttribute("answers").toString());
+           answers1=Integer.parseInt(session.getAttribute("answers1").toString());
+           answers2=Integer.parseInt(session.getAttribute("answers2").toString());       
+           answers3=Integer.parseInt(session.getAttribute("answers3").toString());       
+           session.setAttribute("answers4", "answers4");
+ int answers4=Integer.parseInt(request.getParameter("answers4"));
+            hs.setAttribute("answers4", answers4);
+           %>
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 
   <script src="js/index.js"></script>
   <script type="text/javascript">
-    var answers = [];
+    var answers4 = [];
     function check(str)
     {
       var radArray = document.getElementsByName(str);
@@ -402,8 +417,8 @@
         if(radArray[i].checked)
         {
           // alert(radArray[i].value);
-          answers[parseInt(str)] = radArray[i].value;
-          alert(answers[parseInt(str)])
+          answers4[parseInt(str)] = radArray[i].value;
+          alert(answers4[parseInt(str)])
         }
       }
     }
